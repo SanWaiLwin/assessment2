@@ -1,0 +1,14 @@
+/**
+ * 
+ */
+package com.neurogine.assessment2.service;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 6:47:33 PM
+ */
+public interface ReportService {
+
+}

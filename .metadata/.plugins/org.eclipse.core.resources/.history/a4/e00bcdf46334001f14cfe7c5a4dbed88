@@ -1,0 +1,15 @@
+/**
+ * 
+ */
+package com.neurogine.assessment2.controller;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 4:01:23 PM
+ */
+@RestController
+public class FlatFileGeneraterController {
+
+}

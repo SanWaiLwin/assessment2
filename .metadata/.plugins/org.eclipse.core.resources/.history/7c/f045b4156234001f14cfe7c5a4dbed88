@@ -1,0 +1,28 @@
+package com.neurogine.assessment2;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.beanio.BeanWriter;
+import org.beanio.StreamFactory;
+
+import com.neurogine.assessment2.model.Body;
+import com.neurogine.assessment2.model.Header;
+import com.neurogine.assessment2.model.Trailer;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 3:40:51 PM
+ */
+public class FlatFileGenerator {
+
+	public static void main(String[] args) {
+        FlatFileService service = new FlatFileService();
+        service.generateFlatFile();
+    }
+}

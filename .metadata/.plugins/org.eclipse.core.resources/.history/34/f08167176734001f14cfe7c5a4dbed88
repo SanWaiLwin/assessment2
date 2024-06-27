@@ -1,0 +1,18 @@
+package com.neurogine.assessment2.generator;
+
+import com.neurogine.assessment2.service.FlatFileService;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 4:10:36 PM
+ */
+public class FlatFileGenerator {
+
+	public static void main(String[] args) {
+        FlatFileService service = new FlatFileService();
+        String filePath = service.generateFlatFile();
+        System.out.println("Generate flat file's path is --> " + filePath);
+    }
+}

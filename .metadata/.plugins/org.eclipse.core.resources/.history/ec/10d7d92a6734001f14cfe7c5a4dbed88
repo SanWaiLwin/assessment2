@@ -1,0 +1,26 @@
+package com.neurogine.assessment2.generator;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.neurogine.assessment2.service.FlatFileService;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 4:10:36 PM
+ */
+public class FlatFileGenerator {
+
+	private final FlatFileService flatFileService;
+
+	@Autowired
+	public FlatFileGenerator(FlatFileService flatFileService) {
+		this.flatFileService = flatFileService;
+	}
+
+	public static void main(String[] args) { 
+		String filePath = service.generateFlatFile();
+		System.out.println("Generate flat file's path is --> " + filePath);
+	}
+}

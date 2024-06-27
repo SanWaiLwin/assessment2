@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package com.neurogine.assessment2.service;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 3:45:39 PM
+ */
+public class FlatFileService {
+	
+	void generateFlatFile();
+
+}

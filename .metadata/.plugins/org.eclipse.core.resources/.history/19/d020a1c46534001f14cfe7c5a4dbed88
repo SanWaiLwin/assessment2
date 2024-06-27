@@ -1,0 +1,29 @@
+package com.neurogine.assessment2.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.neurogine.assessment2.service.FlatFileService;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 4:01:23 PM
+ */
+@Controller
+public class AssessmentController {
+
+	private final FlatFileService flatFileService;
+
+    @Autowired
+    public AssessmentController(FlatFileService flatFileService) {
+        this.flatFileService = flatFileService;
+    }
+
+    @GetMapping("/generate-flat-file")
+    public String generateFlatFile() {
+    	String filePath = flatFileService.generateFlatFile();
+        return "Example endpoint called";
+    }
+}

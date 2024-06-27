@@ -1,0 +1,10 @@
+package com.neurogine.assessment2;
+
+//@SpringBootApplication
+public class AssessmentApplication {
+
+	public static void main(String[] args) {
+		
+    }
+
+}

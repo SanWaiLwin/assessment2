@@ -1,0 +1,49 @@
+/**
+ * 
+ */
+package com.neurogine.assessment2.service;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 3:45:39 PM
+ */
+public class FlatFileService {
+ 
+	public String generateFlatFile() {
+		StreamFactory factory = StreamFactory.newInstance();
+      try (InputStream mappingStream = AssessmentApplication.class.getClassLoader().getResourceAsStream("mapping.xml")) {
+          if (mappingStream == null) {
+              throw new IOException("Mapping file not found in classpath");
+          }
+          factory.load(mappingStream);
+
+          BeanWriter out = factory.createWriter("flatFile", new File("test2.TXT"));
+          try {
+              Header header = new Header();
+              out.write(header);
+
+              List<Body> bodyList = new ArrayList<>();
+              bodyList.add(new Body("6813162459", "RM2.00"));
+              bodyList.add(new Body("2039229524", "RM10.00"));
+              bodyList.add(new Body("2299488320", "RM5.00"));
+              bodyList.add(new Body("3898335898", "RM1255.00"));
+
+              for (Body body : bodyList) {
+                  out.write(body);
+              }
+
+              Trailer trailer = new Trailer();
+              out.write(trailer);
+
+              out.flush();
+          } finally {
+              out.close();
+          }
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
+	} 
+
+}

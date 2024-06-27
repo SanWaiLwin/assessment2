@@ -1,0 +1,13 @@
+package com.neurogine.assessment2;
+
+import org.beanio.annotation.Field;
+import org.beanio.annotation.Record;
+
+@Record
+public class Header {
+    @Field(at = 0, length = 1, literal = "H")
+    private String recordType;
+
+    @Field(at = 13, length = 9, literal = "FLAT_FILE")
+    private String fileType;
+}

@@ -1,0 +1,29 @@
+/**
+ * 
+ */
+package com.neurogine.assessment2.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 4:01:23 PM
+ */
+@Controller
+public class FlatFileGeneraterController {
+
+	private final FlatFileGeneraterController flatFileGeneraterController;
+
+    @Autowired
+    public FlatFileGeneraterController(FlatFileGeneraterController flatFileGeneraterController) {
+        this.flatFileGeneraterController = flatFileGeneraterController;
+    }
+
+    @GetMapping("/example")
+    public String exampleEndpoint() {
+        exampleService.doSomething();
+        return "Example endpoint called";
+    }
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beanio xmlns="http://www.beanio.org/2012/03"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.beanio.org/2012/03 http://www.beanio.org/2012/03/mapping.xsd">
+
+    <stream name="fileStream" format="fixedlength">
+        <record name="header" class="com.example.Header">
+            <field name="recordType" length="1" position="0" rid="true"/>
+            <field name="fileType" length="9" position="13"/>
+        </record>
+
+        <record name="body" class="com.example.Body" minOccurs="0" maxOccurs="unbounded">
+            <field name="referenceNo" length="14" position="20"/>
+            <field name="amount" length="16" position="40"/>
+        </record>
+
+        <record name="trailer" class="com.example.Trailer">
+            <field name="recordType" length="1" position="0" rid="true"/>
+            <field name="fileType" length="9" position="13"/>
+        </record>
+    </stream>
+</beanio>
+ 

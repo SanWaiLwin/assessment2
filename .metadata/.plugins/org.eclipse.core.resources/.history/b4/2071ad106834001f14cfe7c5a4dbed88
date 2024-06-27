@@ -1,0 +1,102 @@
+/**
+ * 
+ */
+package com.neurogine.assessment2.service;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.beanio.BeanWriter;
+import org.beanio.StreamFactory;
+import org.springframework.core.io.ClassPathResource;
+
+import com.neurogine.assessment2.AssessmentApplication;
+import com.neurogine.assessment2.model.Body;
+import com.neurogine.assessment2.model.Header;
+import com.neurogine.assessment2.model.Trailer;
+import com.neurogine.assessment2.util.FileUtil; 
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 4:23:43 PM
+ */
+public class FlatFileServiceImpl implements FlatFileService {
+
+	private static final String MAPPING_FILE = "mapping.xml";
+    private static final String OUTPUT_FILE = "test2.TXT";
+    
+	public String generateFlatFile() {
+//		StreamFactory factory = StreamFactory.newInstance();
+//		try (InputStream mappingStream = AssessmentApplication.class.getClassLoader()
+//				.getResourceAsStream("mapping.xml")) {
+//			if (mappingStream == null) {
+//				throw new IOException("Mapping file not found in classpath");
+//			}
+//			factory.load(mappingStream);
+//
+//			BeanWriter out = factory.createWriter("flatFile", new File("test2.TXT"));
+//			try {
+//				Header header = new Header();
+//				out.write(header);
+//
+//				List<Body> bodyList = new ArrayList<>();
+//				bodyList.add(new Body("6813162459", "RM2.00"));
+//				bodyList.add(new Body("2039229524", "RM10.00"));
+//				bodyList.add(new Body("2299488320", "RM5.00"));
+//				bodyList.add(new Body("3898335898", "RM1255.00"));
+//
+//				for (Body body : bodyList) {
+//					out.write(body);
+//				}
+//
+//				Trailer trailer = new Trailer();
+//				out.write(trailer);
+//
+//				out.flush();
+//			} finally {
+//				out.close();
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		return null;
+		
+		StreamFactory factory = StreamFactory.newInstance();
+        try (InputStream mappingStream = new ClassPathResource(MAPPING_FILE).getInputStream()) {
+            if (mappingStream == null) {
+                throw new IOException("Mapping file not found in classpath");
+            }
+            factory.load(mappingStream);
+
+            // Create output file using FileUtil
+            File outputFile = FileUtil.createFile(OUTPUT_FILE);
+
+            // Create BeanWriter for 'flatFile' stream
+            try (BeanWriter out = factory.createWriter("flatFile", outputFile)) {
+                // Write header
+                Header header = new Header();
+                out.write(header);
+
+                // Write body records
+                List<Body> bodyList = createBodyList(); // Generate body records
+                for (Body body : bodyList) {
+                    out.write(body);
+                }
+
+                // Write trailer
+                Trailer trailer = new Trailer();
+                out.write(trailer);
+
+                out.flush();
+            }
+        } catch (IOException e) {
+            throw new IOException("Failed to generate flat file", e);
+        }
+        return OUTPUT_FILE;
+	}
+}

@@ -1,0 +1,14 @@
+package com.neurogine.assessment2;
+
+import org.beanio.annotation.Field;
+import org.beanio.annotation.Record;
+
+/**
+ * @version : 1.0.0
+ * @description :
+ * @author : SanWaiLwin
+ * @date : Jun 27, 2024 3:18:09 PM
+ */
+public class Trailer {
+
+}
