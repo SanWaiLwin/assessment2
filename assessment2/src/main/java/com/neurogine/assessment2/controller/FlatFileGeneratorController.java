@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.neurogine.assessment2;
+package com.neurogine.assessment2.controller;
 
 import java.io.IOException;
 

@@ -22,6 +22,10 @@ dependencies {
 	implementation 'org.beanio:beanio:2.1.0'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'net.sf.jasperreports:jasperreports:6.17.0'
+	compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    implementation 'com.lowagie:itext:2.1.7'
 }
 
 tasks.named('test') {
